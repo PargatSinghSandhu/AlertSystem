@@ -14,3 +14,8 @@ by sending an email.
 5. If 3 days have passed, it will send an email with red alert.
 
 Repository: https://github.com/PargatSinghSandhu/AlertSystem.git
+
+Features:
+1. Database Integration: Connects to a MySQL db to fetch data.
+2. CSV Report Generation: Generates reports in CSV format.
+3. Email Alerts: Send email alerts with attached reports.
