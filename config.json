@@ -5,7 +5,8 @@
   "password": "admin",
   "database": "online_movie_rating"
 },
-//startid and endid can be changed according to the  requirments
+// startid and endid can be changed according to the  requirments
+
   "queries":
   {
     "fetch_movies": "SELECT *FROM movies WHERE id BETWEEN {start_ID} AND {end_ID}"
