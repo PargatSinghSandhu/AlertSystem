@@ -9,8 +9,14 @@
 
   "queries":
   {
-    "fetch_movies": "SELECT *FROM movies WHERE id BETWEEN {start_ID} AND {end_ID}"
+    "Query": "SELECT *FROM movies WHERE id BETWEEN {start_ID} AND {end_ID}",
+    "start_ID": 1,
+    "end_ID": 80
+  },
 
+  "output":
+  {
+    "csv_output_path": "cron/reports/movies.csv"
   },
 
   "email":
@@ -26,7 +32,7 @@
 
   "logging":
   {
-    "log_file_path" :
+    "log_file_path" : "logs/error.log"
   }
 
 }
