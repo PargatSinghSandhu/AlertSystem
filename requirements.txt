@@ -1,0 +1,57 @@
+Introduction:
+This document outlines the requirements for the email sending feature, which is the part of the
+weekly and montly cron job reports. The feature is implmented using Mailgun API to send emails
+with attached CSV reports gnerated from MySQL database queries.
+
+Purpose:
+The purpose of this feture is to automate the process of sending the reports via email
+to specified receipients. This feature ensures timely and consistent delivery reports,
+enhancing the efficiency of reporting tasks.
+
+Scope:
+The scope includes:
+1. Fetchin data from a MySQL database.
+2. Generating CSV reports.
+3. Sending emails with the generated reports as attachments using Mailgun.
+
+Assumptions:
+1. The database connection details and Mailgun API credentials are correctly set in the
+environment.
+2. The recepients' email addresses are valid and authorized to receive emails from
+the Mailgun sandbox domain.
+
+Functional Requirements:
+The System should connect to a MySQL database using the following parameters:
+1. host
+2. user
+3. password
+4. database
+
+Query Execution:
+Query can be changed on the config.json filr according to the requirement,
+and will be applicable to whole code.
+
+CSV Report Generation:
+1. The system should generate a CSV file from the query results.
+2. The CSV file should be saved to a path specified in the configuation.
+
+Email Sending:
+1. The system should send an email using MailGun API.
+2. Email's Sender, Recepient, Subject line, body can be changed on config.json,
+and will be applicable to whole code.
+
+ENVIRONMENT VARIABLE:
+export MAILGUN_API_KEY="your-mailgun-api-key"
+export MAILGUN_DOMAIN="your-mailgun-domain"
+
+
+
+PACKAGES TO BE INSTALLED:
+The following Python packages are required for the implmentation:
+1. mysql-connector-python
+2. requests
+
+Can install these packages using pip on terminal:
+pip install mysql-connector-python requests
+or
+pip3 install mysql-connector-python requests

@@ -5,13 +5,13 @@
   "password": "admin",
   "database": "online_movie_rating"
 },
-// startid and endid can be changed according to the  requirments
+
 
   "queries":
   {
-    "Query": "SELECT *FROM movies WHERE id BETWEEN {start_ID} AND {end_ID}",
+    "query": "SELECT *FROM movies WHERE id BETWEEN {start_ID} AND {end_ID}",
     "start_ID": 1,
-    "end_ID": 80
+    "end_ID": 70
   },
 
   "output":
@@ -21,11 +21,12 @@
 
   "email":
   {
-    "sender": "sandhu.pargat07@gmail.com",
+    "sender": "Excited User <mailgun@sandboxf959dbdca2d84075b960f2e457bce144.mailgun.org>",
     "password": "011259870Pq!",
-    "recipients": ["pargat.singh0522@gmail.com"],
+    "recipients": "pargat.singh0522@gmail.com",
     "subject": "Weekly reports of cheques",
-    "body": "Cheques not submitted from last [1],[2],[3]",
+    "body": "Hello,\n\n Cheques are not submitted!\n\nBest Regards,\nIT Team",
+
     "attachment_path" : "cron/reports/movie.csv"
 
   },

@@ -2,7 +2,8 @@ import os.path
 import json
 import csv
 import mysql.connector
-import connect
+import mysql
+from mysql.connector import connect
 
 def fetch_data(config, start_ID, end_ID):
     '''
@@ -19,7 +20,7 @@ def fetch_data(config, start_ID, end_ID):
     query = config["queries"]["query"].format(start_ID=start_ID, end_ID=end_ID)
 
     try:
-        connection = mysql.connector.connect(
+        connection = connect(
             host=db_config['host'],
             user=db_config['user'],
             password=db_config['password'],
@@ -35,6 +36,10 @@ def fetch_data(config, start_ID, end_ID):
             current_dir = os.path.dirname(__file__)
             csv_output_path = os.path.join(current_dir, '..', csv_output_path)
             csv_output_path = os.path.abspath(csv_output_path)
+
+            #Ensure the directory exists
+            output_dir = os.path.dirname(csv_output_path)
+            os.makedirs(output_dir, exist_ok=True)
 
             with open(csv_output_path, 'w', newline='') as csvfile:
                 csvwriter = csv.writer(csvfile)
