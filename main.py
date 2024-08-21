@@ -1,6 +1,6 @@
 from src.fetch_data import fetch_data
 from src.send_email import send_email
-from src.utils import get_csv_output_path
+from src.utils import get_csv_output_path, log_error
 import csv
 import mysql.connector
 from mysql.connector import connect
@@ -16,8 +16,13 @@ def load_config(config_file): # loading the config file
     return config #this will return the config file as a dictionary
 
 def process_country(config, country, donation_plans, start_date, end_date):
-    csv_output_path = fetch_data(config, country, donation_plans, start_date, end_date)
-    return csv_output_path
+    try:
+        query = generate_query(country, donation_plans, start_date, end_date)
+        csv_output_path = fetch_data(config, query)
+        return csv_output_path
+    except Exception as e:
+        log_error(config, str(e))
+        raise
 
 def main():
     #laod the configuration file
