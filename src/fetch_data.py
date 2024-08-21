@@ -31,35 +31,35 @@ def fetch_data(config, start_ID, end_ID):
             cursor.execute(query)
             movies = cursor.fetchall()
 
-            csv_output_path = config["output"]["csv_output_path"]
-
+            csv_output_path = config["output"]['csv_output_path']
             current_dir = os.path.dirname(__file__)
             csv_output_path = os.path.join(current_dir, '..', csv_output_path)
             csv_output_path = os.path.abspath(csv_output_path)
 
-            #Ensure the directory exists
+
+            #ensuring the directory exists
             output_dir = os.path.dirname(csv_output_path)
-            os.makedirs(output_dir, exist_ok=True)
+            os.makedirs(output_dir, exist_ok = True)
+
 
             with open(csv_output_path, 'w', newline='') as csvfile:
                 csvwriter = csv.writer(csvfile)
                 csvwriter.writerow([i[0] for i in cursor.description])
                 csvwriter.writerows(movies)
 
-    except mysql.connector.Error as e:
-        log_file_path = config["logging"]["log_file_path"]
-        current_dir = os.path.dirname(__file__) #__file__ is a special variable in python
-        # which contains the path to the script that is currently being executed
+            return csv_output_path #return the path of the generated CSV file
 
+    except Error as e:
+        log_file_path = config["logging"]["log_file_path"]
+        current_dir = os.path.dirname(__file__)
         log_file_path = os.path.join(current_dir, '..', log_file_path)
         log_file_path = os.path.abspath(log_file_path)
 
+
         with open(log_file_path, "a") as f:
-            f.write(f"An error occurred {e}")
+            f.write(f"An error occured: {e}\n")
 
     finally:
         if connection:
             connection.close()
-
-
 

@@ -1,39 +1,47 @@
 {
-"database" : {
-  "host": "localhost",
-  "user": "admin",
-  "password": "admin",
-  "database": "online_movie_rating"
-},
-
-
-  "queries":
+  "database":
   {
-    "query": "SELECT *FROM movies WHERE id BETWEEN {start_ID} AND {end_ID}",
-    "start_ID": 1,
-    "end_ID": 70
+    "host": "localhost",
+    "user": "admin",
+    "password": "admin",
+    "database": "donation_db"
   },
-
-  "output":
+  "reportConfig":
   {
-    "csv_output_path": "cron/reports/movies.csv"
+    "dateRange":
+    {
+      "start_date": "2024-07-01",
+      "end_date": "2024-07-31"
+    },
+    "countries":
+      [
+        "USA",
+        "Canada",
+        "Australia"
+      ],
+    "donationPlans":
+            [
+              "TAT",
+              "TAT_Recurring",
+              "MRK",
+              "MRK Recurring",
+              "Lifetime"
+            ]
   },
-
   "email":
+
   {
-    "sender": "Excited User <mailgun@sandboxf959dbdca2d84075b960f2e457bce144.mailgun.org>",
-    "password": "011259870Pq!",
-    "recipients": "pargat.singh0522@gmail.com",
-    "subject": "Weekly reports of cheques",
-    "body": "Hello,\n\n Cheques are not submitted!\n\nBest Regards,\nIT Team",
-
-    "attachment_path" : "cron/reports/movie.csv"
-
+    "sender": "email.com",
+    "password": "8937459324",
+    "recepients": [recipent.com],
+    "subject": "Monthly report {Country}",
+    "body": "Hello, \n\n Please find the attachment report for USA.\n\n Best Regards,\nProblem Solvers"
   },
-
-  "logging":
-  {
-    "log_file_path" : "logs/error.log"
+  "logging": {
+    "log_file_path": "logs/error.log"
   }
-
 }
+
+comment : password should get from the env file
+
+
